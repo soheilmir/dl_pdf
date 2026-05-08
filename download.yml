@@ -1,0 +1,19 @@
+name: Download Files
+
+on:
+  workflow_dispatch: # این گزینه به شما اجازه میدهد workflow را به صورت دستی اجرا کنید
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a file
+        run: |
+          # لینک دانلود فایل خود را جایگزین کنید
+          curl -L -o downloaded_file.pdf "https://www.st.com/resource/en/reference_manual/rm0008-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf"
+          
+      - name: Upload as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-downloaded-file
+          path: downloaded_file.pdf
